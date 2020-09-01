@@ -1,0 +1,59 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-grid>
+      <ion-row>
+        <ion-col offset-lg="4" size-lg="4" size-md="12" size-xs="12">
+          <div padding>
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Login</ion-card-title>
+                <ion-card-subtitle>&nbsp;</ion-card-subtitle>
+              </ion-card-header>
+
+              <ion-card-content>
+                <ion-grid>
+                  <ion-row color="primary">
+                    <ion-col size-lg="12" size-md="12" size-xs="12">
+                      <div padding>
+                        <ion-select placeholder="Tipo de Documento">
+                          <ion-select-option>Cedula de Ciudadania </ion-select-option>
+                          <ion-select-option>Cedula Extranjera </ion-select-option>
+                          <ion-select-option>NIT </ion-select-option>
+                        </ion-select>
+                        <br>
+                        <ion-item>
+                          <ion-input name="txtDocumento" type="text" placeholder="Numero de Documento"></ion-input>
+                        </ion-item>
+                        <br>
+                        <div>
+                          <a id="forgot-password" routerLink='/forgot'>
+                            ¿Olvidaste tu contraseña?
+                          </a>
+                        </div>
+                        <ion-item>
+                          <ion-input name="txtPassword" type="password" placeholder="Contraseña" required></ion-input>
+                        </ion-item>
+                      <br>
+                        <ion-button size="large" expand="block">Ingresar</ion-button>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                  <br>
+                  <ion-row>
+                    <div class="aling-center-div">
+
+                      <a routerLink='/registro'>
+                        ¿Aun no estas registrado?. ¡Registrate!
+                      </a>
+                    </div>
+                  </ion-row>
+                </ion-grid>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+</ion-content>

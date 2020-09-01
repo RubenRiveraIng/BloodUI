@@ -1,0 +1,77 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-grid>
+      <ion-row>
+        <ion-col offset-lg="4" size-lg="4" size-md="12" size-xs="12">
+          <div padding>
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Registro</ion-card-title>
+                <ion-card-subtitle>&nbsp;</ion-card-subtitle>
+              </ion-card-header>
+
+              <ion-card-content>
+                <ion-grid>
+                  <ion-row color="primary">
+                    <ion-col size-lg="12" size-md="12" size-xs="12">
+                      <ion-item>
+                      <ion-select placeholder="Tipo de Documento">
+                        <ion-select-option>Cedula de Ciudadania </ion-select-option>
+                        <ion-select-option>Cedula Extranjera </ion-select-option>
+                        <ion-select-option>NIT </ion-select-option>
+                      </ion-select>
+                      </ion-item>
+                      <ion-item>
+                        <ion-input name="txtDocumento" type="text" placeholder="Numero de Documento"></ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-input name="txtNombres" type="text" placeholder="Nombre(s)"></ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-input name="txtPApellido" type="text" placeholder="Primer Apellido"></ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-input name="txtSApellido" type="text" placeholder="Segundo Apellido"></ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-input name="txtEmail" type="text" placeholder="Correo Electronico"></ion-input>
+                      </ion-item>
+                      <ion-item>
+                        <ion-select placeholder="Genero">
+                          <ion-select-option>Hombre </ion-select-option>
+                          <ion-select-option>Mujer </ion-select-option>
+                          <ion-select-option>X </ion-select-option>
+                        </ion-select>
+                      </ion-item>
+                      <ion-item>
+                        <ion-select placeholder="Tipo de Sangre y RH">
+                          <ion-select-option>A+ </ion-select-option>
+                          <ion-select-option>A- </ion-select-option>
+                          <ion-select-option>AB+ </ion-select-option>
+                        </ion-select>
+                      </ion-item>
+                      <ion-item>
+                        <ion-input name="txtContraseña" type="text" placeholder="Contraseña"></ion-input>
+                      </ion-item>
+                      <br>
+                      <ion-button size="large" expand="block">Registrarse</ion-button>
+                    </ion-col>
+                  </ion-row>
+                  <br>
+                  <ion-row>
+                    <div class="aling-center-div">
+                      <a id="back-to-home" routerLink='/home'>
+                        Volver al Inicio de sesion
+                      </a>
+                    </div>
+                  </ion-row>
+                </ion-grid>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+</ion-content>
