@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="danger"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: right;">
+      Enviar Notificación
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false">
+  <div id="container">
+    <ion-card>
+      <form [formGroup]="_formNotificacion">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-input name="_titulo" formControlName="_titulo"   [(ngModel)]="_titulo" type="text" placeholder="Titulo (MAX. 20 Caracteres)"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-textarea name="_mensaje" formControlName="_mensaje"  [(ngModel)]="_mensaje" placeholder="Mensaje (MAX. 100 Caracteres)">
+
+                </ion-textarea>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <center>
+                <ion-button (click)="sendNotificacion()" color="danger">Enviar</ion-button>
+              </center>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </ion-card>
+
+  </div>
+</ion-content>

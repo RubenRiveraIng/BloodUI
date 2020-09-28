@@ -1,0 +1,52 @@
+<ion-content [fullscreen]="false">
+    <ion-slide>
+      <div id="container">
+        <ion-grid *ngIf="_lstcbs.length == 0">
+          <ion-row>
+              <ion-col style="height: 90%;">
+                  <ion-card>
+                      <ion-grid>
+                          <ion-row>
+                              <ion-col>
+                                  <center><b>No se han encontrado solicitudes</b></center>
+                              </ion-col>
+                          </ion-row>
+                      </ion-grid>
+                  </ion-card>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+        <ion-grid  *ngIf="_lstcbs.length > 0">
+          <ion-row *ngFor="let item of _lstcbs">
+            <ion-col (click)="detalleCamapana(item.IdCampanas_Donacion)" style="height: 90%;">
+              <ion-card>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size-lg="3" size-md="3" size-xs="3">
+                      <center><img src="assets/img/prueba-de-sangre.png" style="margin-top: 25%;" ></center>
+                    </ion-col>
+                    <ion-col>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col>
+                           <b>{{item.Nombre}}</b>
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col>
+                            {{item.Descripcion}}
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+  
+  
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-slide>
+  </ion-content>

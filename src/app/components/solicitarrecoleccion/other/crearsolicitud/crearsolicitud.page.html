@@ -1,0 +1,48 @@
+<ion-content>
+    <ion-grid>
+        <form [formGroup]="_formSolicitud">
+            <ion-row>
+                <ion-col>
+                    <ion-item>
+                        <fa-icon icon="list"></fa-icon>&nbsp;
+                        <ion-select  formControlName="_tipoEntidad" [(ngModel)]="_entidad" name="_entidad" (ionChange)="getEntidad($event)"
+                            placeholder="Entidad" style="max-width: 100%;    width: 100%;">
+                            <ion-select-option *ngFor="let item of _lstUsuario" [value]="item.IdUsuario">
+                                {{item.Nombres+" "+item.PrimerApellido+" "+item.SegundoApellido}}
+                           </ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-item>
+                        <fa-icon icon="calendar"></fa-icon>&nbsp;
+                        <ion-datetime  formControlName="_fecha" [(ngModel)]="_fechaRecoleccion" displayFormat="DD MM YY"
+                            placeholder="Fecha de visita"></ion-datetime>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-item>
+                        <fa-icon icon="map"></fa-icon>&nbsp;
+                        <ion-input formControlName="_direccion" [(ngModel)]="_direccion" name="_direccion" type="text"
+                            placeholder="Direccion de visita">
+                        </ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col style="height: 300px;">
+                  <div #map_canvas style="height: 100%; width: 100%" id="map_canvas"></div>
+                </ion-col>
+              </ion-row>
+        </form>
+        <br>
+        <br>
+        <center>
+            <ion-button color="danger" (click)="createSolicitud()">Crear solicitud</ion-button>
+        </center>
+    </ion-grid>
+</ion-content> 

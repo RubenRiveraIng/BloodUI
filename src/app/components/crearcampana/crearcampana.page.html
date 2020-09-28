@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="danger"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: right;">
+     Crear Campaña
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <form [formGroup]="_frmCampana">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <fa-icon icon="list"></fa-icon>&nbsp;
+            <ion-input type="text" [(ngModel)]="_campana.Nombre" name="_nombre" formControlName="_nombre" placeholder="Nombre"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <fa-icon icon="list"></fa-icon>&nbsp;
+            <ion-input type="text" formControlName="_descripcion" [(ngModel)]="_campana.Descripcion"  name="_descripcion"  placeholder="Descripcion"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <fa-icon icon="map"></fa-icon>&nbsp;
+            <ion-input type="text" formControlName="_direccion" [(ngModel)]="_campana.Direccion" name="_direccion" placeholder="Direccion"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <fa-icon icon="calendar"></fa-icon>&nbsp;
+            <ion-datetime formControlName="_fechaInicio" [(ngModel)]="_campana.Fecha_Inicio" displayFormat="DD MM YY"
+              placeholder="Fecha de Inicio"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <fa-icon icon="calendar"></fa-icon>&nbsp;
+            <ion-datetime formControlName="_fechaFin" [(ngModel)]="_campana.Fecha_Fin" displayFormat="DD MM YY"
+              placeholder="Fecha Fin"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <fa-icon icon="phone"></fa-icon>&nbsp;
+            <ion-input formControlName="_telefono_1" [(ngModel)]="_campana.Telefono_1" name="_telefono_1" type="text"
+              placeholder="Telefono Contacto 1">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <fa-icon icon="phone"></fa-icon>&nbsp;
+            <ion-input formControlName="_telefono_2" [(ngModel)]="_campana.Telefono_2" name="_telefono_2" type="text"
+              placeholder="Telefono Contacto 2">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <fa-icon icon="envelope"></fa-icon>&nbsp;
+            <ion-input formControlName="_email" [(ngModel)]="_campana.Email" name="_email" type="email"
+              placeholder="Email de Contacto">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="height: 300px;">
+          <div #map_canvas style="height: 100%; width: 100%" id="map_canvas"></div>
+        </ion-col>
+      </ion-row>
+    </form>
+    <br>
+    <br>
+    <center>
+      <ion-button color="danger" (click)="createCampana()">Crear campana</ion-button>
+    </center>
+  </ion-grid>
+</ion-content>

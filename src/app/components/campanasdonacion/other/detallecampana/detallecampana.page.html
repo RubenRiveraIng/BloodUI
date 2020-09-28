@@ -1,0 +1,122 @@
+<ion-content [fullscreen]="false">
+  <ion-slide>
+    <div id="container">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <center><img src="assets/img/prueba-de-sangre.png" style="max-width: 100%;
+              border: 0;
+              width: 30%;"></center>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card>
+              <ion-grid>
+                <ion-row>
+                  <ion-col style="text-align: left;">
+                    {{Nombre}}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: left;">
+                    <b>Presentación</b>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: left;">
+                    {{Descripcion}}
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card>
+              <ion-grid>
+                <ion-row>
+                  <ion-col style="text-align: left;">
+                    <b>Información de la campaña</b>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: left;">
+                    <b>Horario de Atención</b>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: left;">
+                    Desde
+                  </ion-col>
+                  <ion-col style="text-align: left;">
+                    {{Fecha_Inicio}}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: left;">
+                    Hasta
+                  </ion-col>
+                  <ion-col style="text-align: left;">
+                    {{Fecha_Fin}}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: left;" style="text-align: left;">
+                    <ion-icon name="mail-outline"></ion-icon>
+                  </ion-col>
+                  <ion-col style="text-align: left;">
+                    <a href="mailto:{{Email}}"> {{Email}}</a>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: left;" style="text-align: left;">
+                    <ion-icon name="call-outline"></ion-icon>
+                  </ion-col>
+                  <ion-col style="text-align: left;">
+                    <a (click)="launchPhone(Telefono_1)">{{Telefono_1}}</a>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="text-align: left;" style="text-align: left;">
+                    <ion-icon name="call-outline"></ion-icon>
+                  </ion-col>
+                  <ion-col style="text-align: left;">
+                    <a (click)="launchPhone(Telefono_2)">{{Telefono_2}}</a>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-card>
+              <ion-grid>
+                <ion-row>
+                  <ion-col style="text-align: left;">
+                    <b>¿Como llegar?</b>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size-lg="1" size-md="1" size-xs="1" style="text-align: left;">
+                    <ion-icon name="navigate-outline"></ion-icon>
+                  </ion-col>
+                  <ion-col style="text-align: left;">
+                    {{Direccion}}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="height: 200px;">
+                    <div #map_canvas style="height: 100%; width: 100%" id="map_canvas"></div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-slide>
+</ion-content>

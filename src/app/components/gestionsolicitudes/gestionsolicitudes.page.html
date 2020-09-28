@@ -1,0 +1,77 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" color="danger"></ion-back-button>
+        </ion-buttons>
+        <ion-title style="text-align: right;">
+            Solicitudes
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="false">
+    <ion-slide>
+        <div id="container">
+            <ion-grid *ngIf="_srData.length == 0">
+                <ion-row>
+                    <ion-col style="height: 90%;">
+                        <ion-card>
+                            <ion-grid>
+                                <ion-row>
+                                    <ion-col>
+                                        <center><b>No se han encontrado solicitudes</b></center>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-grid *ngIf="_srData.length > 0">
+                <ion-row *ngFor="let item of _srData">
+                    <ion-col style="height: 90%;" (click)="detalleSolicitud(item.IdSolicitud)">
+                        <ion-card>
+                            <ion-grid>
+                                <ion-row>
+                                    <ion-col style="text-align: left;">
+                                        <fa-icon icon="user"></fa-icon>&nbsp;
+                                        <b>Nombre</b>
+                                    </ion-col>
+                                    <ion-col style="text-align: left;">
+                                        {{item.NombreSolicitante}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col style="text-align: left;">
+                                        <fa-icon icon="calendar"></fa-icon>&nbsp;
+                                        <b>Fecha de Visita</b>
+                                    </ion-col>
+                                    <ion-col style="text-align: left;">
+                                        {{item.Fecha_Recoleccion.replace('T',' ')}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col style="text-align: left;">
+                                        <fa-icon icon="map"></fa-icon>&nbsp;
+                                        <b>Direccion</b>
+                                    </ion-col>
+                                    <ion-col style="text-align: left;">
+                                        {{item.Direccion}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col style="text-align: left;">
+                                        <fa-icon icon="flag"></fa-icon>&nbsp;
+                                        <b>Estado</b>
+                                    </ion-col>
+                                    <ion-col style="text-align: left;">
+                                        {{item.strEstado_Solicitud}}
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </ion-slide>
+</ion-content>

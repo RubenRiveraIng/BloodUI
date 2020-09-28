@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Salir"  color="danger" ></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: right;">
+  
+   </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content  [fullscreen]="false">
+  <ion-slide>
+    <div id="container">
+    <ion-grid>
+      <ion-row>
+         <ion-col  *ngFor="let item of _lstMenu"  (click)="redirectTo(item.urlRedirect)" size-lg="6" size-md="6" size-xs="6">
+          <ion-card style="height: 90%;">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <img src="{{item.Icono}}" style="max-width: 100%;
+                  border: 0;
+                  width: 50%;">
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <b> {{item.Nombre}}</b>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+         </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-slide>
+</ion-content>

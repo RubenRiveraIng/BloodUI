@@ -1,66 +1,71 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="false">
   <div id="container">
+
     <ion-grid>
       <ion-row>
         <ion-col offset-lg="4" size-lg="4" size-md="12" size-xs="12">
           <div padding>
+
             <ion-card>
               <ion-card-header>
                 <ion-card-title>Registro</ion-card-title>
-                <ion-card-subtitle>&nbsp;</ion-card-subtitle>
               </ion-card-header>
 
               <ion-card-content>
                 <ion-grid>
-                  <ion-row color="primary">
+                  <ion-row>
                     <ion-col size-lg="12" size-md="12" size-xs="12">
+                      <form [formGroup]="_formRegister">
                       <ion-item>
-                      <ion-select placeholder="Tipo de Documento">
-                        <ion-select-option>Cedula de Ciudadania </ion-select-option>
-                        <ion-select-option>Cedula Extranjera </ion-select-option>
-                        <ion-select-option>NIT </ion-select-option>
-                      </ion-select>
+                        <fa-icon icon="list"></fa-icon>&nbsp;
+                        <ion-select [(ngModel)]="_tipoDocumento" name="_tipoDocumento"formControlName="_tipoDocumento" (ionChange)="getTipoDoc($event)" placeholder="Tipo de Documento" style="max-width: 100%;    width: 100%;">
+                          <ion-select-option *ngFor="let item of _lstTipoDocumento" [value]="item.IdTipoDocumento">
+                            {{item.Nombre}}
+                          </ion-select-option>
+                        </ion-select> 
                       </ion-item>
                       <ion-item>
-                        <ion-input name="txtDocumento" type="text" placeholder="Numero de Documento"></ion-input>
+                        <fa-icon icon="id-card"></fa-icon>&nbsp;
+                        <ion-input [(ngModel)]="_usuario.NumeroDocumento" name="_numeroDocumento" formControlName="_numeroDocumento"  type="text" placeholder="Numero de Documento"></ion-input>
                       </ion-item>
                       <ion-item>
-                        <ion-input name="txtNombres" type="text" placeholder="Nombre(s)"></ion-input>
+                        <fa-icon icon="user"></fa-icon>&nbsp;
+                        <ion-input [(ngModel)]="_usuario.Nombres"  name="_nombres" formControlName="_nombres" type="text" placeholder="Nombre(s)"></ion-input>
                       </ion-item>
                       <ion-item>
-                        <ion-input name="txtPApellido" type="text" placeholder="Primer Apellido"></ion-input>
+                        <fa-icon icon="user"></fa-icon>&nbsp;
+                        <ion-input [(ngModel)]="_usuario.PrimerApellido" name="_papellido" formControlName="_papellido" type="text" placeholder="Primer Apellido"></ion-input>
                       </ion-item>
                       <ion-item>
-                        <ion-input name="txtSApellido" type="text" placeholder="Segundo Apellido"></ion-input>
+                        <fa-icon icon="user"></fa-icon>&nbsp;
+                        <ion-input [(ngModel)]="_usuario.SegundoApellido"  name="_sapellido" formControlName="_sapellido"  type="text" placeholder="Segundo Apellido"></ion-input>
                       </ion-item>
                       <ion-item>
-                        <ion-input name="txtEmail" type="text" placeholder="Correo Electronico"></ion-input>
-                      </ion-item>
-                      <ion-item>
-                        <ion-select placeholder="Genero">
-                          <ion-select-option>Hombre </ion-select-option>
-                          <ion-select-option>Mujer </ion-select-option>
-                          <ion-select-option>X </ion-select-option>
+                        <fa-icon icon="medkit"></fa-icon>&nbsp;
+                        <ion-select [(ngModel)]="_tipoSangre" (ionChange)="getTipoSan($event)" placeholder="Tipo de Sangre" name="_tipoSangre" formControlName="_tipoSangre" style="max-width: 100%;    width: 100%;">
+                          <ion-select-option *ngFor="let item of _lstTipoSangre" [value]="item.IdTipoSangre">
+                            {{item.Nombre}}
+                          </ion-select-option>
                         </ion-select>
                       </ion-item>
                       <ion-item>
-                        <ion-select placeholder="Tipo de Sangre y RH">
-                          <ion-select-option>A+ </ion-select-option>
-                          <ion-select-option>A- </ion-select-option>
-                          <ion-select-option>AB+ </ion-select-option>
-                        </ion-select>
+                        <fa-icon icon="envelope"></fa-icon>&nbsp;
+                        <ion-input [(ngModel)]="_usuario.CorreoElectronico"  name="_email" formControlName="_email" type="email" placeholder="Correo Electronico"></ion-input>
                       </ion-item>
+
                       <ion-item>
-                        <ion-input name="txtContraseña" type="text" placeholder="Contraseña"></ion-input>
+                        <fa-icon icon="lock"></fa-icon>&nbsp;
+                        <ion-input [(ngModel)]="_usuario.HashContrasena"  name="_password" formControlName="_password" type="password" placeholder="Contraseña"></ion-input>
                       </ion-item>
                       <br>
-                      <ion-button size="large" expand="block">Registrarse</ion-button>
+                      <ion-button size="large" expand="block" (click)="createUsuario()" color="danger" >Registrarse</ion-button>
+                      </form>
                     </ion-col>
                   </ion-row>
                   <br>
                   <ion-row>
                     <div class="aling-center-div">
-                      <a id="back-to-home" routerLink='/home'>
+                      <a id="back-to-home" routerLink='/home' style="font-weight: bold;color: #bfa9a9;">
                         Volver al Inicio de sesion
                       </a>
                     </div>

@@ -1,0 +1,67 @@
+<ion-content>
+ <ion-grid>
+
+     <ion-row>
+         <ion-col>
+            <ion-item>
+                <fa-icon icon="id-card"></fa-icon>&nbsp;
+                <ion-input  [(ngModel)]="_usuario.NumeroDocumento"  name="_numeroDocumento" type="text" readonly></ion-input>
+            </ion-item>
+         </ion-col>
+     </ion-row>
+     <form [formGroup]="_formUpdate"> 
+     <ion-row>
+        <ion-col>
+           <ion-item>
+               <fa-icon icon="user"></fa-icon>&nbsp;
+               <ion-input [(ngModel)]="_usuario.Nombres"  formControlName="_nombres"   name="_nombres" type="text" placeholder="Nombres"></ion-input>
+           </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+           <ion-item>
+               <fa-icon icon="user"></fa-icon>&nbsp;
+               <ion-input [(ngModel)]="_usuario.PrimerApellido"  formControlName="_papellido" name="_papellido" type="text" placeholder="Primer Apellido"></ion-input>
+           </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+           <ion-item>
+               <fa-icon icon="user"></fa-icon>&nbsp;
+               <ion-input [(ngModel)]="_usuario.SegundoApellido"  formControlName="_sapellido"  name="_sapellido" type="text" placeholder="Segundo Apellido"></ion-input>
+           </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+           <ion-item>
+               <fa-icon icon="envelope"></fa-icon>&nbsp;
+               <ion-input  [(ngModel)]="_usuario.CorreoElectronico"  formControlName="_email" name="_email"  type="email" placeholder="Correo Electronico"></ion-input>
+           </ion-item>
+        </ion-col>
+    </ion-row>
+<!-- </form> -->
+    <ion-row>
+        <ion-col>
+           <ion-item>
+               <fa-icon icon="weight"></fa-icon>&nbsp;
+               <ion-input [(ngModel)]="_usuario.Peso" formControlName="_peso"  name="_peso"  type="number" placeholder="Peso"></ion-input>
+           </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+           <ion-item>
+            <fa-icon icon="calendar"></fa-icon>&nbsp;
+            <ion-datetime  [(ngModel)]="_usuario.FechaNacimiento"   formControlName="_fecha" displayFormat="DD MM YY" placeholder="Fecha de Nacimiento"></ion-datetime>
+           </ion-item>
+        </ion-col>
+    </ion-row>
+</form>
+    <br>
+    <br>
+    <center><ion-button (click)="updateUsuario()"  color="danger">Actualizar Datos</ion-button></center>
+ </ion-grid>
+</ion-content>

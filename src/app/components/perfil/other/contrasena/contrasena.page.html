@@ -1,0 +1,28 @@
+<ion-content>
+    <ion-grid>
+        <form [formGroup]="_formUpdate">
+            <ion-row>
+                <ion-col>
+                    <ion-item>
+                        <fa-icon icon="lock"></fa-icon>&nbsp;
+                        <ion-input  [(ngModel)]="_ncontrasena"  formControlName="_ncontrasena" name="_npassword" type="password" placeholder="Nueva Contraseña"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-item>
+                        <fa-icon icon="lock"></fa-icon>&nbsp;
+                        <ion-input   [(ngModel)]="_rncontrasena"  formControlName="_rncontrasena" name="_rnpassword" type="password" placeholder="Repita la Nueva Contraseña">
+                        </ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </form>
+        <br>
+        <br>
+        <center>
+            <ion-button color="danger"(click)="updatePassword()">Actualizar Contraseña</ion-button>
+        </center>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>
+      <center>{{_titleModal}}</center>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <br>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-lg="6" size-md="12" size-xs="12">
+        <br>
+        <br>
+        <br>
+        <br>
+        <img src="{{_icon}}" style="max-width: 100%;
+        border: 0;
+        margin-left: 25%;
+        width: 50%;">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+
+      <ion-col size-lg="12" size-md="12" size-xs="12">
+        <br>
+        <center><label>{{_mensaje}}</label></center>
+      </ion-col>
+
+      <ion-col size-lg="12" size-md="12" size-xs="12">
+        <br>
+        <br>
+        <ion-button size="large" expand="block" (click)="closeModal()" color="danger">Ok</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
