@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { ModalController } from '@ionic/angular';
 import { ModalPage } from '../../../generico/modal/modal.page';
 import { loader } from '../../../generico/loader';
+import * as moment from 'moment';
 @Component({
   selector: 'app-misdatos',
   templateUrl: './misdatos.page.html',
@@ -59,11 +60,13 @@ export class MisdatosPage implements OnInit {
   public updateUsuario() {
     
     if (this._formUpdate.valid) {
-      this._loader.showLoader();
+      var years = moment().diff(this._usuario.FechaNacimiento, 'years');
+      console.log(years);
+      if(years > 0){
+        this._loader.showHideAutoLoader();
         this._usuarioService.updateUser(this._usuario).subscribe(data => {
         if(parseInt(data))
         {
-          this._loader.hideLoader();
           this._iconModal="assets/img/aprobar.png";
           this._msgModal="Has actualizado correctamente tus datos";
           this._titleModal="Enhorabuena!";
@@ -72,6 +75,15 @@ export class MisdatosPage implements OnInit {
         }
         else{}
       });
+    }
+    else{
+
+      this._iconModal="assets/img/maleta.png";
+      this._msgModal="Por favor ingrese una fecha de nacimiento valida";
+      this._titleModal="Upss!";
+      this._redirectModal=null;
+      this.openModal();
+    }
     } else {
       this._iconModal="assets/img/maleta.png";
       this._msgModal="Recuerda que todos los campos son obligatorios";

@@ -14,7 +14,7 @@ export class loader {
 
         this.loadingController.create({
             message: 'Por favor Espere...',
-            duration: 5000
+            duration: 3500
         }).then((res) => {
             res.present();
 

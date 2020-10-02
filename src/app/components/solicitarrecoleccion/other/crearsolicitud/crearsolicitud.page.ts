@@ -20,6 +20,8 @@ import {
 } from '@ionic-native/google-maps/ngx';
 import { SolicitudRecoleccionService } from '../../../../service/SolicitudRecoleccion.service';
 import { SolicitudRecoleccion } from '../../../../model/SolicitudRecoleccion'
+import { JoinSolicitud } from '../../../../model/JoinSolicitud';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-crearsolicitud',
@@ -43,6 +45,7 @@ export class CrearsolicitudPage implements OnInit {
   private _solicitudRecoleccion: SolicitudRecoleccion;
   private LNG: any;
   private LTD: any;
+  public _srData: Array<JoinSolicitud>;
   map: GoogleMap;
   @ViewChild('map_canvas') element: ElementRef;
 
@@ -68,6 +71,7 @@ export class CrearsolicitudPage implements OnInit {
   }
 
   ngOnInit() {
+    this.validaUltimaSolicitud();
   }
 
   ionViewDidEnter() {
@@ -77,6 +81,22 @@ export class CrearsolicitudPage implements OnInit {
       this.map.trigger('resize');
     });
 
+  }
+  private validaUltimaSolicitud() {
+    this._srService.getSolicitudesPorUsuarioRegular().subscribe(data => {
+      this._srData = data;
+      var days = moment().diff(this._srData[(this._srData.length - 1)].Fecha_Recoleccion, 'days');
+      console.log(days);
+
+      if (days < 90) {
+        this._loader.hideLoader();
+        this._iconModal = "assets/img/maleta.png";
+        this._msgModal = "Para poder realizar una nueva solicitud , deben haber transcurrido por lo menos 90 dias desde la ultima solicitud";
+        this._titleModal = "Upss!";
+        this._redirectModal = "menu";
+        this.openModal();
+      }
+    })
   }
   private loadEntidades() {
     this._usuarioService.getEntidades().subscribe(data => {
@@ -94,17 +114,29 @@ export class CrearsolicitudPage implements OnInit {
       this._solicitudRecoleccion.LGN_Donde = this.LNG;
       this._solicitudRecoleccion.LTD_Donde = this.LTD;
       this._solicitudRecoleccion.IdUsuario_Recolecta = this._entidad;
-      this._solicitudRecoleccion.Fecha_Recoleccion=this._fechaRecoleccion;
-      this._srService.createSolicitud(this._solicitudRecoleccion).subscribe(data => {
-        if (parseInt(data)) {
-          this._iconModal = "assets/img/aprobar.png";
-          this._msgModal = "Se ha creado tu solicitud correctamente";
-          this._titleModal = "Enhorabuena!";
-          this._redirectModal = "solicitarrecoleccion/historialsolicitud";
-          this.openModal();
-        }
-        else { }
-      });
+      this._solicitudRecoleccion.Fecha_Recoleccion = this._fechaRecoleccion;
+      var days = moment(this._fechaRecoleccion.toString().split('T')[0]).diff(moment(), 'days');
+      console.log(days);
+      if (days >= 0) {
+        this._loader.showHideAutoLoader();
+        this._srService.createSolicitud(this._solicitudRecoleccion).subscribe(data => {
+          if (parseInt(data)) {
+            this._iconModal = "assets/img/aprobar.png";
+            this._msgModal = "Se ha creado tu solicitud correctamente";
+            this._titleModal = "Enhorabuena!";
+            this._redirectModal = "menu";
+            this.openModal();
+          }
+          else { }
+        });
+      }
+      else { 
+        this._iconModal = "assets/img/maleta.png";
+        this._msgModal = "La fecha de visita debe ser mayor a la fecha actual ";
+        this._titleModal = "Upss!";
+        this._redirectModal = null;
+        this.openModal();
+      }
     } else {
       this._iconModal = "assets/img/maleta.png";
       this._msgModal = "Recuerde, todos los campos son obligatorios";
@@ -114,6 +146,7 @@ export class CrearsolicitudPage implements OnInit {
     }
 
   }
+
   initMap() {
     this.map = GoogleMaps.create(this.element.nativeElement);
     this.map.one(GoogleMapsEvent.MAP_READY).then((data: any) => {
@@ -128,8 +161,8 @@ export class CrearsolicitudPage implements OnInit {
 
         ltd = position.coords.latitude;
         lng = position.coords.longitude;
-        this.LNG=lng;
-        this.LTD=ltd;
+        this.LNG = lng;
+        this.LTD = ltd;
         let coordinates: LatLng = new LatLng(ltd, lng);
         this.map.setCameraZoom(12);
         this.map.setCameraTarget(coordinates);
@@ -148,8 +181,8 @@ export class CrearsolicitudPage implements OnInit {
             marker.addEventListener(GoogleMapsEvent.MARKER_DRAG_END).subscribe(
               data => {
                 console.log(marker.getPosition());
-                this.LNG =marker.getPosition().lng;
-                this.LTD =marker.getPosition().lat;
+                this.LNG = marker.getPosition().lng;
+                this.LTD = marker.getPosition().lat;
               });
           });
 

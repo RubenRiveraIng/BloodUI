@@ -50,6 +50,7 @@
     "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
     "cordova-plugin-network-information": "^2.0.2",
     "ionic-plugin-deeplinks": "^1.0.20",
+    "moment": "^2.29.0",
     "mx.ferreyra.callnumber": "0.0.2",
     "rxjs": "~6.5.5",
     "rxjs-compat": "^6.6.3",
